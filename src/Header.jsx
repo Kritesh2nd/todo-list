@@ -10,11 +10,11 @@ class Header extends Component {
   state = {
     emptylist:{id:0,title:'do nothing',date:'0/0/000',color:'fff',completed:false},
     list:[
-      {id:0,title:'Make bed',date:'8/1/2022',color:'ff4444',completed:false},
-      {id:1,title:'Do Meditation',date:'8/1/2022',color:'00C851',completed:false},
-      {id:2,title:'Do PushUps',date:'8/1/2022',color:'ffbb33',completed:false},
-      {id:3,title:'Study React',date:'8/1/2022',color:'33b5e5',completed:false},
-      {id:4,title:'Practice in hakerrank',date:'8/1/2022',color:'2BBBAD',completed:false}
+      // {id:0,title:'Make bed',date:'8/1/2022',color:'ff4444',completed:false},
+      // {id:1,title:'Do Meditation',date:'8/1/2022',color:'00C851',completed:false},
+      // {id:2,title:'Do PushUps',date:'8/1/2022',color:'ffbb33',completed:false},
+      // {id:3,title:'Study React',date:'8/1/2022',color:'33b5e5',completed:false},
+      // {id:4,title:'Practice in hakerrank',date:'8/1/2022',color:'2BBBAD',completed:false}
     ],
     newtodo:{id:0,title:'',date:'8/1/2022',color:'fff',completed:false},
     date:'8/1/2022',
@@ -34,9 +34,9 @@ class Header extends Component {
       {id:9,col:'007E33',bor:'bor2-999',select:false},
       {id:10,col:'0099CC',bor:'bor2-999',select:false}
     ],
-    // floor:'list'
+    floor:'list'
     // floor:'form'
-    floor:'settings'
+    // floor:'settings'
   }
   handelListtype = listtype =>{this.setState({listtype});}
   handelListTask = l =>{
