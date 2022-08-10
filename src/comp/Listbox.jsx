@@ -6,7 +6,10 @@ class Listbox extends Component {
   state = {  } 
   handelList(value){
     let listLet;
-    if(value=='typea'){
+    if(this.props.list.length==0){
+      listLet = <div className='lbsNoTodos bor pt5 pb2'>There are no todos</div>;
+    }
+    else if(value=='typea'){
       listLet = this.props.list.map(l => (!l.completed)?<List 
           key={l.id} 
           list={l} 

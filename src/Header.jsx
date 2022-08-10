@@ -104,6 +104,10 @@ class Header extends Component {
   //   getLocalStorageData = localStorage.getItem("todos");
   //   console.log(getLocalStorageData);
   // }
+  checkLocalStorage = () =>{
+    let getLocalStorageData = localStorage.getItem("todos");
+    console.log('getLocalStorageData',getLocalStorageData);
+  }
   handelClearLocalStorgae = () =>{
     localStorage.clear();
   }
@@ -149,7 +153,6 @@ class Header extends Component {
             handelDataSave={this.handelDataSave}
             handelClearLocalStorgae={this.handelClearLocalStorgae}
           />
-
         </div>
     }
     return floorDiv;
@@ -157,6 +160,7 @@ class Header extends Component {
   render() { 
     return (
       <div className='header_shell flex fdc bor'>
+        {this.checkLocalStorage()}
         <div className="hsFloor1 hsFloor0 bor flex">
           <div className="hsF1Lft bor flex">
             <div className="hsF1Title bor">Todo List</div>&nbsp;&nbsp;
