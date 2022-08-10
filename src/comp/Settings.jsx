@@ -6,6 +6,9 @@ class Settings extends Component {
     if(!data){return 'Off';}
     else{return 'On';}
   }
+  clearConsole = () =>{
+    console.clear();
+  }
   render() { 
     return (
       <div className='settings_shell bor'>
@@ -16,6 +19,15 @@ class Settings extends Component {
         </div>
         <div className="ssFloor2 ssFloor0 bor flex jcc">
           <div className="ssBtnClearData bor cup" onClick={()=>this.props.handelClearLocalStorgae()}>Clear Local Storage</div>
+        </div>
+        <div className="ssFloor2 ssFloor0 bor flex jcc">
+          <div className="ssBtnClearData bor cup" onClick={()=>this.props.fakeDataSave()}>Save Fake Data</div>
+        </div>
+        <div className="ssFloor2 ssFloor0 bor flex jcc">
+          <div className="ssBtnClearData bor cup" onClick={()=>this.props.console()}>Console</div>
+        </div>
+        <div className="ssFloor2 ssFloor0 bor flex jcc">
+          <div className="ssBtnClearData bor cup" onClick={()=>this.clearConsole()}>Clear Console</div>
         </div>
       </div>
     );
