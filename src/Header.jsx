@@ -61,7 +61,6 @@ class Header extends Component {
     let newTodo = {...this.state.newtodo};
     let listClone = [...this.state.list];
     let index = this.state.list.length;
-    console.log(listClone.length,e)
     let newId = listClone.length===0?0:listClone[index-1].id+1;
     newTodo.title = e.target.value;
     newTodo.id = newId;
@@ -103,13 +102,11 @@ class Header extends Component {
   }
   fakeDataSave = () =>{
     let getLocalStorageData = localStorage.getItem("todos");
-    console.log(getLocalStorageData);
     let listArray = [...this.state.fakelist];
     localStorage.setItem("todos", JSON.stringify(listArray));
     getLocalStorageData = localStorage.getItem("todos");
-    console.log(getLocalStorageData);
   }
-  console = () =>{
+  print = () =>{
     let getLocalStorageData = localStorage.getItem("todos");
     console.log("savedata",this.state.savedata);
     console.log('----------------------------------------------------------------');
@@ -119,13 +116,12 @@ class Header extends Component {
     console.log('================================================================');
   }
   componentDidUpdate(){
-    this.handelDataSaveTrue();console.log('savedatatruxxxe');
+    this.handelDataSaveTrue();
+    console.log('componentDidUpdate');
   }
   handelDataSaveTrue = () =>{
-    console.log("hwlllo",this.state.savedata,"end");
     if(this.state.savedata){
       let getLocalStorageData = localStorage.getItem("todos");
-      console.log("data save trueeeeeeeeeeeeeee");
       let listArray = [...this.state.fakelist];
       localStorage.setItem("todos", JSON.stringify(listArray));
       getLocalStorageData = localStorage.getItem("todos");
@@ -188,9 +184,8 @@ class Header extends Component {
             handelDataSave={this.handelDataSave}
             handelClearLocalStorgae={this.handelClearLocalStorgae}
             fakeDataSave={this.fakeDataSave}
-            console={this.console}
+            console={this.print}
           />
-
         </div>
     }
     return floorDiv;
