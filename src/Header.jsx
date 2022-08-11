@@ -9,7 +9,8 @@ import { FaTimes } from 'react-icons/fa';
 class Header extends Component {
   state = {
     emptylist:{id:0,title:'do nothing',date:'0/0/000',color:'fff',completed:false},
-    list:[],
+    list:[
+    ],
     fakelist:[
       {id:0,title:'Make bed',date:'8/1/2022',color:'ff4444',completed:false},
       {id:1,title:'Do Meditation',date:'8/1/2022',color:'00C851',completed:false},
@@ -35,13 +36,9 @@ class Header extends Component {
       {id:9,col:'007E33',bor:'bor2-999',select:false},
       {id:10,col:'0099CC',bor:'bor2-999',select:false}
     ],
-    rendercount:0,
-    // floor:'list'
+    floor:'list'
     // floor:'form'
-    floor:'settings'
-  }
-  c=(c)=>{
-    console.log(c);
+    // floor:'settings'
   }
   handelListtype = listtype =>{this.setState({listtype});}
   handelListTask = l =>{
@@ -64,7 +61,7 @@ class Header extends Component {
     let newTodo = {...this.state.newtodo};
     let listClone = [...this.state.list];
     let index = this.state.list.length;
-    // console.log(listClone.length,e)
+    console.log(listClone.length,e)
     let newId = listClone.length===0?0:listClone[index-1].id+1;
     newTodo.title = e.target.value;
     newTodo.id = newId;
@@ -75,9 +72,6 @@ class Header extends Component {
     if(this.state.newtodo.title!=''){
       newList.push(this.state.newtodo);
       this.setState({list:newList,floor:'list'});
-    }
-    if(this.state.savedata){
-      console.log('savedata true',this.state.savedata);
     }
   }
   handelDelete = (l) =>{
@@ -103,26 +97,39 @@ class Header extends Component {
     else{
       this.setState({savedata:true})
     }
+    
+    
+    // this.testOne();
   }
   fakeDataSave = () =>{
     let getLocalStorageData = localStorage.getItem("todos");
-    // console.log(getLocalStorageData);
+    console.log(getLocalStorageData);
     let listArray = [...this.state.fakelist];
     localStorage.setItem("todos", JSON.stringify(listArray));
     getLocalStorageData = localStorage.getItem("todos");
-    // console.log(getLocalStorageData);
+    console.log(getLocalStorageData);
   }
-  print = () =>{
-    // let getLocalStorageData = localStorage.getItem("todos");
-    let getLocalStorageData = JSON.parse(localStorage.getItem("todos"));
+  console = () =>{
+    let getLocalStorageData = localStorage.getItem("todos");
     console.log("savedata",this.state.savedata);
     console.log('----------------------------------------------------------------');
     console.log("getLocalStorageData",getLocalStorageData);
-    console.log("getLocalStorageData",getLocalStorageData[0]);
     console.log('----------------------------------------------------------------');
     console.log("this.state.list",this.state.list);
-    console.log("hello",this.state.list[0],'end')
     console.log('================================================================');
+  }
+  componentDidUpdate(){
+    this.handelDataSaveTrue();console.log('savedatatruxxxe');
+  }
+  handelDataSaveTrue = () =>{
+    console.log("hwlllo",this.state.savedata,"end");
+    if(this.state.savedata){
+      let getLocalStorageData = localStorage.getItem("todos");
+      console.log("data save trueeeeeeeeeeeeeee");
+      let listArray = [...this.state.fakelist];
+      localStorage.setItem("todos", JSON.stringify(listArray));
+      getLocalStorageData = localStorage.getItem("todos");
+    }
   }
   // testOne = () =>{
   //   let getLocalStorageData = localStorage.getItem("todos");
@@ -181,62 +188,12 @@ class Header extends Component {
             handelDataSave={this.handelDataSave}
             handelClearLocalStorgae={this.handelClearLocalStorgae}
             fakeDataSave={this.fakeDataSave}
-            console={this.print}
+            console={this.console}
           />
+
         </div>
     }
     return floorDiv;
-  }
-  
-  componentDidMount(){
-    let newcount = 1;
-    this.setState({rendercount:1});
-    this.checkLocalStorage();
-  }
-  componentDidUpdate(){
-    console.log('componentDidUpdate');
-    this.checkSaveData();
-  }
-  shouldComponentUpdate() {
-    if(this.state.rendercount==0){
-      console.log('Greeting - shouldComponentUpdate lifecycle - true');
-      return true;
-    }
-    else{
-      console.log('Greeting - shouldComponentUpdate lifecycle - false');
-      return false;
-    }
-    
-  }
-  checkLocalStorage=()=>{
-    const {savedata} = this.state;
-    let getLocalStorageData = localStorage.getItem("todos");
-    if(getLocalStorageData==null){
-      this.setState({savedata:false});
-    }
-    else{
-      this.setState({savedata:true});
-    }
-  }
-  checkSaveData=()=>{
-    const {savedata} = this.state;
-    
-    if(savedata==true){
-      this.c('trueee');
-      this.savedataTrue();
-    }
-    else{
-      this.c('falsee');
-    }
-    console.log("save data after",savedata);
-  }
-  savedataTrue=()=>{
-    // let getLocalStorageData = localStorage.getItem("todos");
-    let getLocalStorageData = JSON.parse(localStorage.getItem("todos"));
-    this.c('hi',getLocalStorageData[0]);
-    const can = ['apple','ball','cat'];
-    this.setState({list:getLocalStorageData});
-    
   }
   render() { 
     return (
